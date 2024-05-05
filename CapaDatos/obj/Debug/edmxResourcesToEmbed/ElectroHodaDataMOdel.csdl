@@ -1,0 +1,452 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ELECTROHOGARModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Categorias">
+    <Key>
+      <PropertyRef Name="IDCategoria" />
+    </Key>
+    <Property Name="IDCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreCategoria" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Productos" Relationship="Self.RefCategorias20" FromRole="Categorias" ToRole="Productos" />
+  </EntityType>
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="CedulaCliente" />
+    </Key>
+    <Property Name="CedulaCliente" Type="String" MaxLength="17" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="NombreCliente" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ApellidoCliente" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TelefonoCliente" Type="Int32" Nullable="false" />
+    <Property Name="DomicilioCliente" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CiudadCliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MunicipioCliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DocumentoRequerimiento" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="TelefonoReferencia1" Type="Int32" />
+    <Property Name="TelefonoReferencia2" Type="Int32" />
+    <NavigationProperty Name="Ventas" Relationship="Self.RefClientes11" FromRole="Clientes" ToRole="Ventas" />
+  </EntityType>
+  <EntityType Name="Compras">
+    <Key>
+      <PropertyRef Name="IDcompra" />
+    </Key>
+    <Property Name="IDcompra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TotalCompra" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="FechaCompra" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="RUCproveedor" Type="String" MaxLength="14" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="detalleCompra" Relationship="Self.RefCompras23" FromRole="Compras" ToRole="detalleCompra" />
+    <NavigationProperty Name="Proveedores" Relationship="Self.RefProveedores25" FromRole="Compras" ToRole="Proveedores" />
+  </EntityType>
+  <EntityType Name="ControlPagos">
+    <Key>
+      <PropertyRef Name="IDcontrolPago" />
+    </Key>
+    <Property Name="IDcontrolPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MontoCuota" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="FechaCuota" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="MoraCuota" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="IDcredito" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Creditos" Relationship="Self.RefCreditos21" FromRole="ControlPagos" ToRole="Creditos" />
+  </EntityType>
+  <EntityType Name="Creditos">
+    <Key>
+      <PropertyRef Name="IDcredito" />
+    </Key>
+    <Property Name="IDcredito" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="plazoPago" Type="Int32" Nullable="false" />
+    <Property Name="TotalCredito" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="TasaInteres" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FechaVencimiento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IDFactura" Type="Int32" />
+    <NavigationProperty Name="ControlPagos" Relationship="Self.RefCreditos21" FromRole="Creditos" ToRole="ControlPagos" />
+    <NavigationProperty Name="Ventas" Relationship="Self.RefFacturas10" FromRole="Creditos" ToRole="Ventas" />
+  </EntityType>
+  <EntityType Name="detalleCompra">
+    <Key>
+      <PropertyRef Name="IDdetalleCompra" />
+    </Key>
+    <Property Name="IDdetalleCompra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SubtotalDetalleCompra" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="CantidadCompra" Type="Int32" Nullable="false" />
+    <Property Name="IDProducto" Type="Int32" Nullable="false" />
+    <Property Name="IDcompra" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Compras" Relationship="Self.RefCompras23" FromRole="detalleCompra" ToRole="Compras" />
+    <NavigationProperty Name="Productos" Relationship="Self.RefProductos19" FromRole="detalleCompra" ToRole="Productos" />
+  </EntityType>
+  <EntityType Name="DetalleFactura">
+    <Key>
+      <PropertyRef Name="IDdetalleFactura" />
+    </Key>
+    <Property Name="IDdetalleFactura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cantidad" Type="Int32" Nullable="false" />
+    <Property Name="SubtotalDetalle" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="IDProducto" Type="Int32" Nullable="false" />
+    <Property Name="IDFactura" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Devoluciones" Relationship="Self.RefDetalleFactura24" FromRole="DetalleFactura" ToRole="Devoluciones" />
+    <NavigationProperty Name="Ventas" Relationship="Self.RefFacturas14" FromRole="DetalleFactura" ToRole="Ventas" />
+    <NavigationProperty Name="Productos" Relationship="Self.RefProductos13" FromRole="DetalleFactura" ToRole="Productos" />
+  </EntityType>
+  <EntityType Name="Devoluciones">
+    <Key>
+      <PropertyRef Name="IDdevolucion" />
+    </Key>
+    <Property Name="IDdevolucion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaDevolucion" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IDdetalleFactura" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DetalleFactura" Relationship="Self.RefDetalleFactura24" FromRole="Devoluciones" ToRole="DetalleFactura" />
+    <NavigationProperty Name="Reemplazos" Relationship="Self.RefDevoluciones22" FromRole="Devoluciones" ToRole="Reemplazos" />
+  </EntityType>
+  <EntityType Name="Empleados">
+    <Key>
+      <PropertyRef Name="CedulaEmpleado" />
+    </Key>
+    <Property Name="CedulaEmpleado" Type="String" MaxLength="17" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="NombreEmpleado" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ApellidoEmpleado" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TelefonoEmpleado" Type="Int32" Nullable="false" />
+    <Property Name="UsuarioEmpleado" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="ContraseñaEmpleado" Type="String" MaxLength="8" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Ventas" Relationship="Self.RefEmpleados12" FromRole="Empleados" ToRole="Ventas" />
+    <NavigationProperty Name="Login" Relationship="Self.RefEmpleados14" FromRole="Empleados" ToRole="Login" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="55" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="9" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="CedulaEmpleado" Type="String" MaxLength="17" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Empleados" Relationship="Self.RefEmpleados14" FromRole="Login" ToRole="Empleados" />
+  </EntityType>
+  <EntityType Name="Productos">
+    <Key>
+      <PropertyRef Name="IDProducto" />
+    </Key>
+    <Property Name="IDProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreProducto" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DescripcionProducto" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PrecioProducto" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="StockProducto" Type="Int32" Nullable="false" />
+    <Property Name="RegaliaProducto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DescuentoProducto" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="IDCategoria" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Categorias" Relationship="Self.RefCategorias20" FromRole="Productos" ToRole="Categorias" />
+    <NavigationProperty Name="detalleCompra" Relationship="Self.RefProductos19" FromRole="Productos" ToRole="detalleCompra" />
+    <NavigationProperty Name="DetalleFactura" Relationship="Self.RefProductos13" FromRole="Productos" ToRole="DetalleFactura" />
+  </EntityType>
+  <EntityType Name="Proveedores">
+    <Key>
+      <PropertyRef Name="RUCproveedor" />
+    </Key>
+    <Property Name="RUCproveedor" Type="String" MaxLength="14" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="NombreProveedor" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TelefonoProveedor" Type="Int32" Nullable="false" />
+    <Property Name="DireccionProveedor" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CorreoProveedor" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Compras" Relationship="Self.RefProveedores25" FromRole="Proveedores" ToRole="Compras" />
+  </EntityType>
+  <EntityType Name="Reemplazos">
+    <Key>
+      <PropertyRef Name="IDreemplazo" />
+    </Key>
+    <Property Name="IDreemplazo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TotalReemplazo" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="IVAReemplazo" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="IDdevolucion" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Devoluciones" Relationship="Self.RefDevoluciones22" FromRole="Reemplazos" ToRole="Devoluciones" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Ventas">
+    <Key>
+      <PropertyRef Name="IDFactura" />
+    </Key>
+    <Property Name="IDFactura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaFactura" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EfectivoCliente" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="TotalFactura" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="TotalCambio" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="IVAFactura" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="tipoPago" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CedulaCliente" Type="String" MaxLength="17" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="CedulaEmpleado" Type="String" MaxLength="17" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Clientes" Relationship="Self.RefClientes11" FromRole="Ventas" ToRole="Clientes" />
+    <NavigationProperty Name="Creditos" Relationship="Self.RefFacturas10" FromRole="Ventas" ToRole="Creditos" />
+    <NavigationProperty Name="DetalleFactura" Relationship="Self.RefFacturas14" FromRole="Ventas" ToRole="DetalleFactura" />
+    <NavigationProperty Name="Empleados" Relationship="Self.RefEmpleados12" FromRole="Ventas" ToRole="Empleados" />
+  </EntityType>
+  <Association Name="RefCategorias20">
+    <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
+    <End Role="Productos" Type="Self.Productos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categorias">
+        <PropertyRef Name="IDCategoria" />
+      </Principal>
+      <Dependent Role="Productos">
+        <PropertyRef Name="IDCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RefClientes11">
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+    <End Role="Ventas" Type="Self.Ventas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="CedulaCliente" />
+      </Principal>
+      <Dependent Role="Ventas">
+        <PropertyRef Name="CedulaCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RefCompras23">
+    <End Role="Compras" Type="Self.Compras" Multiplicity="1" />
+    <End Role="detalleCompra" Type="Self.detalleCompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Compras">
+        <PropertyRef Name="IDcompra" />
+      </Principal>
+      <Dependent Role="detalleCompra">
+        <PropertyRef Name="IDcompra" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RefProveedores25">
+    <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1" />
+    <End Role="Compras" Type="Self.Compras" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proveedores">
+        <PropertyRef Name="RUCproveedor" />
+      </Principal>
+      <Dependent Role="Compras">
+        <PropertyRef Name="RUCproveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RefCreditos21">
+    <End Role="Creditos" Type="Self.Creditos" Multiplicity="1" />
+    <End Role="ControlPagos" Type="Self.ControlPagos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Creditos">
+        <PropertyRef Name="IDcredito" />
+      </Principal>
+      <Dependent Role="ControlPagos">
+        <PropertyRef Name="IDcredito" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RefFacturas10">
+    <End Role="Ventas" Type="Self.Ventas" Multiplicity="0..1" />
+    <End Role="Creditos" Type="Self.Creditos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ventas">
+        <PropertyRef Name="IDFactura" />
+      </Principal>
+      <Dependent Role="Creditos">
+        <PropertyRef Name="IDFactura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RefProductos19">
+    <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+    <End Role="detalleCompra" Type="Self.detalleCompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Productos">
+        <PropertyRef Name="IDProducto" />
+      </Principal>
+      <Dependent Role="detalleCompra">
+        <PropertyRef Name="IDProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RefDetalleFactura24">
+    <End Role="DetalleFactura" Type="Self.DetalleFactura" Multiplicity="1" />
+    <End Role="Devoluciones" Type="Self.Devoluciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DetalleFactura">
+        <PropertyRef Name="IDdetalleFactura" />
+      </Principal>
+      <Dependent Role="Devoluciones">
+        <PropertyRef Name="IDdetalleFactura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RefFacturas14">
+    <End Role="Ventas" Type="Self.Ventas" Multiplicity="1" />
+    <End Role="DetalleFactura" Type="Self.DetalleFactura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ventas">
+        <PropertyRef Name="IDFactura" />
+      </Principal>
+      <Dependent Role="DetalleFactura">
+        <PropertyRef Name="IDFactura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RefProductos13">
+    <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+    <End Role="DetalleFactura" Type="Self.DetalleFactura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Productos">
+        <PropertyRef Name="IDProducto" />
+      </Principal>
+      <Dependent Role="DetalleFactura">
+        <PropertyRef Name="IDProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RefDevoluciones22">
+    <End Role="Devoluciones" Type="Self.Devoluciones" Multiplicity="1" />
+    <End Role="Reemplazos" Type="Self.Reemplazos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Devoluciones">
+        <PropertyRef Name="IDdevolucion" />
+      </Principal>
+      <Dependent Role="Reemplazos">
+        <PropertyRef Name="IDdevolucion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RefEmpleados12">
+    <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
+    <End Role="Ventas" Type="Self.Ventas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleados">
+        <PropertyRef Name="CedulaEmpleado" />
+      </Principal>
+      <Dependent Role="Ventas">
+        <PropertyRef Name="CedulaEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RefEmpleados14">
+    <End Role="Empleados" Type="Self.Empleados" Multiplicity="1" />
+    <End Role="Login" Type="Self.Login" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleados">
+        <PropertyRef Name="CedulaEmpleado" />
+      </Principal>
+      <Dependent Role="Login">
+        <PropertyRef Name="CedulaEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ELECTROHOGAREntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categorias" EntityType="Self.Categorias" />
+    <EntitySet Name="Clientes" EntityType="Self.Clientes" />
+    <EntitySet Name="Compras" EntityType="Self.Compras" />
+    <EntitySet Name="ControlPagos" EntityType="Self.ControlPagos" />
+    <EntitySet Name="Creditos" EntityType="Self.Creditos" />
+    <EntitySet Name="detalleCompra" EntityType="Self.detalleCompra" />
+    <EntitySet Name="DetalleFactura" EntityType="Self.DetalleFactura" />
+    <EntitySet Name="Devoluciones" EntityType="Self.Devoluciones" />
+    <EntitySet Name="Empleados" EntityType="Self.Empleados" />
+    <EntitySet Name="Login" EntityType="Self.Login" />
+    <EntitySet Name="Productos" EntityType="Self.Productos" />
+    <EntitySet Name="Proveedores" EntityType="Self.Proveedores" />
+    <EntitySet Name="Reemplazos" EntityType="Self.Reemplazos" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Ventas" EntityType="Self.Ventas" />
+    <AssociationSet Name="RefCategorias20" Association="Self.RefCategorias20">
+      <End Role="Categorias" EntitySet="Categorias" />
+      <End Role="Productos" EntitySet="Productos" />
+    </AssociationSet>
+    <AssociationSet Name="RefClientes11" Association="Self.RefClientes11">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="Ventas" EntitySet="Ventas" />
+    </AssociationSet>
+    <AssociationSet Name="RefCompras23" Association="Self.RefCompras23">
+      <End Role="Compras" EntitySet="Compras" />
+      <End Role="detalleCompra" EntitySet="detalleCompra" />
+    </AssociationSet>
+    <AssociationSet Name="RefProveedores25" Association="Self.RefProveedores25">
+      <End Role="Proveedores" EntitySet="Proveedores" />
+      <End Role="Compras" EntitySet="Compras" />
+    </AssociationSet>
+    <AssociationSet Name="RefCreditos21" Association="Self.RefCreditos21">
+      <End Role="Creditos" EntitySet="Creditos" />
+      <End Role="ControlPagos" EntitySet="ControlPagos" />
+    </AssociationSet>
+    <AssociationSet Name="RefFacturas10" Association="Self.RefFacturas10">
+      <End Role="Ventas" EntitySet="Ventas" />
+      <End Role="Creditos" EntitySet="Creditos" />
+    </AssociationSet>
+    <AssociationSet Name="RefProductos19" Association="Self.RefProductos19">
+      <End Role="Productos" EntitySet="Productos" />
+      <End Role="detalleCompra" EntitySet="detalleCompra" />
+    </AssociationSet>
+    <AssociationSet Name="RefDetalleFactura24" Association="Self.RefDetalleFactura24">
+      <End Role="DetalleFactura" EntitySet="DetalleFactura" />
+      <End Role="Devoluciones" EntitySet="Devoluciones" />
+    </AssociationSet>
+    <AssociationSet Name="RefFacturas14" Association="Self.RefFacturas14">
+      <End Role="Ventas" EntitySet="Ventas" />
+      <End Role="DetalleFactura" EntitySet="DetalleFactura" />
+    </AssociationSet>
+    <AssociationSet Name="RefProductos13" Association="Self.RefProductos13">
+      <End Role="Productos" EntitySet="Productos" />
+      <End Role="DetalleFactura" EntitySet="DetalleFactura" />
+    </AssociationSet>
+    <AssociationSet Name="RefDevoluciones22" Association="Self.RefDevoluciones22">
+      <End Role="Devoluciones" EntitySet="Devoluciones" />
+      <End Role="Reemplazos" EntitySet="Reemplazos" />
+    </AssociationSet>
+    <AssociationSet Name="RefEmpleados12" Association="Self.RefEmpleados12">
+      <End Role="Empleados" EntitySet="Empleados" />
+      <End Role="Ventas" EntitySet="Ventas" />
+    </AssociationSet>
+    <AssociationSet Name="RefEmpleados14" Association="Self.RefEmpleados14">
+      <End Role="Empleados" EntitySet="Empleados" />
+      <End Role="Login" EntitySet="Login" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(ELECTROHOGARModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(ELECTROHOGARModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

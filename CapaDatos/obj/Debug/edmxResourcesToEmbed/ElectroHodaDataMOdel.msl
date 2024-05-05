@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ELECTROHOGARModelStoreContainer" CdmEntityContainer="ELECTROHOGAREntities">
+    <EntitySetMapping Name="Categorias">
+      <EntityTypeMapping TypeName="ELECTROHOGARModel.Categorias">
+        <MappingFragment StoreEntitySet="Categorias">
+          <ScalarProperty Name="IDCategoria" ColumnName="IDCategoria" />
+          <ScalarProperty Name="NombreCategoria" ColumnName="NombreCategoria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clientes">
+      <EntityTypeMapping TypeName="ELECTROHOGARModel.Clientes">
+        <MappingFragment StoreEntitySet="Clientes">
+          <ScalarProperty Name="CedulaCliente" ColumnName="CedulaCliente" />
+          <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
+          <ScalarProperty Name="ApellidoCliente" ColumnName="ApellidoCliente" />
+          <ScalarProperty Name="TelefonoCliente" ColumnName="TelefonoCliente" />
+          <ScalarProperty Name="DomicilioCliente" ColumnName="DomicilioCliente" />
+          <ScalarProperty Name="CiudadCliente" ColumnName="CiudadCliente" />
+          <ScalarProperty Name="MunicipioCliente" ColumnName="MunicipioCliente" />
+          <ScalarProperty Name="DocumentoRequerimiento" ColumnName="DocumentoRequerimiento" />
+          <ScalarProperty Name="TelefonoReferencia1" ColumnName="TelefonoReferencia1" />
+          <ScalarProperty Name="TelefonoReferencia2" ColumnName="TelefonoReferencia2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Compras">
+      <EntityTypeMapping TypeName="ELECTROHOGARModel.Compras">
+        <MappingFragment StoreEntitySet="Compras">
+          <ScalarProperty Name="IDcompra" ColumnName="IDcompra" />
+          <ScalarProperty Name="TotalCompra" ColumnName="TotalCompra" />
+          <ScalarProperty Name="FechaCompra" ColumnName="FechaCompra" />
+          <ScalarProperty Name="RUCproveedor" ColumnName="RUCproveedor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ControlPagos">
+      <EntityTypeMapping TypeName="ELECTROHOGARModel.ControlPagos">
+        <MappingFragment StoreEntitySet="ControlPagos">
+          <ScalarProperty Name="IDcontrolPago" ColumnName="IDcontrolPago" />
+          <ScalarProperty Name="MontoCuota" ColumnName="MontoCuota" />
+          <ScalarProperty Name="FechaCuota" ColumnName="FechaCuota" />
+          <ScalarProperty Name="MoraCuota" ColumnName="MoraCuota" />
+          <ScalarProperty Name="IDcredito" ColumnName="IDcredito" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Creditos">
+      <EntityTypeMapping TypeName="ELECTROHOGARModel.Creditos">
+        <MappingFragment StoreEntitySet="Creditos">
+          <ScalarProperty Name="IDcredito" ColumnName="IDcredito" />
+          <ScalarProperty Name="plazoPago" ColumnName="plazoPago" />
+          <ScalarProperty Name="TotalCredito" ColumnName="TotalCredito" />
+          <ScalarProperty Name="TasaInteres" ColumnName="TasaInteres" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+          <ScalarProperty Name="IDFactura" ColumnName="IDFactura" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="detalleCompra">
+      <EntityTypeMapping TypeName="ELECTROHOGARModel.detalleCompra">
+        <MappingFragment StoreEntitySet="detalleCompra">
+          <ScalarProperty Name="IDdetalleCompra" ColumnName="IDdetalleCompra" />
+          <ScalarProperty Name="SubtotalDetalleCompra" ColumnName="SubtotalDetalleCompra" />
+          <ScalarProperty Name="CantidadCompra" ColumnName="CantidadCompra" />
+          <ScalarProperty Name="IDProducto" ColumnName="IDProducto" />
+          <ScalarProperty Name="IDcompra" ColumnName="IDcompra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DetalleFactura">
+      <EntityTypeMapping TypeName="ELECTROHOGARModel.DetalleFactura">
+        <MappingFragment StoreEntitySet="DetalleFactura">
+          <ScalarProperty Name="IDdetalleFactura" ColumnName="IDdetalleFactura" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="SubtotalDetalle" ColumnName="SubtotalDetalle" />
+          <ScalarProperty Name="IDProducto" ColumnName="IDProducto" />
+          <ScalarProperty Name="IDFactura" ColumnName="IDFactura" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Devoluciones">
+      <EntityTypeMapping TypeName="ELECTROHOGARModel.Devoluciones">
+        <MappingFragment StoreEntitySet="Devoluciones">
+          <ScalarProperty Name="IDdevolucion" ColumnName="IDdevolucion" />
+          <ScalarProperty Name="FechaDevolucion" ColumnName="FechaDevolucion" />
+          <ScalarProperty Name="IDdetalleFactura" ColumnName="IDdetalleFactura" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleados">
+      <EntityTypeMapping TypeName="ELECTROHOGARModel.Empleados">
+        <MappingFragment StoreEntitySet="Empleados">
+          <ScalarProperty Name="CedulaEmpleado" ColumnName="CedulaEmpleado" />
+          <ScalarProperty Name="NombreEmpleado" ColumnName="NombreEmpleado" />
+          <ScalarProperty Name="ApellidoEmpleado" ColumnName="ApellidoEmpleado" />
+          <ScalarProperty Name="TelefonoEmpleado" ColumnName="TelefonoEmpleado" />
+          <ScalarProperty Name="UsuarioEmpleado" ColumnName="UsuarioEmpleado" />
+          <ScalarProperty Name="ContraseñaEmpleado" ColumnName="ContraseñaEmpleado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Login">
+      <EntityTypeMapping TypeName="ELECTROHOGARModel.Login">
+        <MappingFragment StoreEntitySet="Login">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="CedulaEmpleado" ColumnName="CedulaEmpleado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Productos">
+      <EntityTypeMapping TypeName="ELECTROHOGARModel.Productos">
+        <MappingFragment StoreEntitySet="Productos">
+          <ScalarProperty Name="IDProducto" ColumnName="IDProducto" />
+          <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+          <ScalarProperty Name="DescripcionProducto" ColumnName="DescripcionProducto" />
+          <ScalarProperty Name="PrecioProducto" ColumnName="PrecioProducto" />
+          <ScalarProperty Name="StockProducto" ColumnName="StockProducto" />
+          <ScalarProperty Name="RegaliaProducto" ColumnName="RegaliaProducto" />
+          <ScalarProperty Name="DescuentoProducto" ColumnName="DescuentoProducto" />
+          <ScalarProperty Name="IDCategoria" ColumnName="IDCategoria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proveedores">
+      <EntityTypeMapping TypeName="ELECTROHOGARModel.Proveedores">
+        <MappingFragment StoreEntitySet="Proveedores">
+          <ScalarProperty Name="RUCproveedor" ColumnName="RUCproveedor" />
+          <ScalarProperty Name="NombreProveedor" ColumnName="NombreProveedor" />
+          <ScalarProperty Name="TelefonoProveedor" ColumnName="TelefonoProveedor" />
+          <ScalarProperty Name="DireccionProveedor" ColumnName="DireccionProveedor" />
+          <ScalarProperty Name="CorreoProveedor" ColumnName="CorreoProveedor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reemplazos">
+      <EntityTypeMapping TypeName="ELECTROHOGARModel.Reemplazos">
+        <MappingFragment StoreEntitySet="Reemplazos">
+          <ScalarProperty Name="IDreemplazo" ColumnName="IDreemplazo" />
+          <ScalarProperty Name="TotalReemplazo" ColumnName="TotalReemplazo" />
+          <ScalarProperty Name="IVAReemplazo" ColumnName="IVAReemplazo" />
+          <ScalarProperty Name="IDdevolucion" ColumnName="IDdevolucion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="ELECTROHOGARModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ventas">
+      <EntityTypeMapping TypeName="ELECTROHOGARModel.Ventas">
+        <MappingFragment StoreEntitySet="Ventas">
+          <ScalarProperty Name="IDFactura" ColumnName="IDFactura" />
+          <ScalarProperty Name="FechaFactura" ColumnName="FechaFactura" />
+          <ScalarProperty Name="EfectivoCliente" ColumnName="EfectivoCliente" />
+          <ScalarProperty Name="TotalFactura" ColumnName="TotalFactura" />
+          <ScalarProperty Name="TotalCambio" ColumnName="TotalCambio" />
+          <ScalarProperty Name="IVAFactura" ColumnName="IVAFactura" />
+          <ScalarProperty Name="tipoPago" ColumnName="tipoPago" />
+          <ScalarProperty Name="CedulaCliente" ColumnName="CedulaCliente" />
+          <ScalarProperty Name="CedulaEmpleado" ColumnName="CedulaEmpleado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="ELECTROHOGARModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="ELECTROHOGARModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="ELECTROHOGARModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="ELECTROHOGARModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ELECTROHOGARModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="ELECTROHOGARModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ELECTROHOGARModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="ELECTROHOGARModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="ELECTROHOGARModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a6f0f29741b24b77b8aee747b7bf5e87" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="ELECTROHOGARModel.Categorias" Width="1.5" PointX="3.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="ELECTROHOGARModel.Clientes" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ELECTROHOGARModel.Compras" Width="1.5" PointX="11" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ELECTROHOGARModel.ControlPagos" Width="1.5" PointX="10.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ELECTROHOGARModel.Creditos" Width="1.5" PointX="8.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ELECTROHOGARModel.detalleCompra" Width="1.5" PointX="13.25" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ELECTROHOGARModel.DetalleFactura" Width="1.5" PointX="8.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ELECTROHOGARModel.Devoluciones" Width="1.5" PointX="10.5" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="ELECTROHOGARModel.Empleados" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ELECTROHOGARModel.Login" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ELECTROHOGARModel.Productos" Width="1.5" PointX="6" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ELECTROHOGARModel.Proveedores" Width="1.5" PointX="8.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ELECTROHOGARModel.Reemplazos" Width="1.5" PointX="12.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="ELECTROHOGARModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ELECTROHOGARModel.Ventas" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="ELECTROHOGARModel.RefCategorias20" ManuallyRouted="false" />
+        <AssociationConnector Association="ELECTROHOGARModel.RefClientes11" ManuallyRouted="false" />
+        <AssociationConnector Association="ELECTROHOGARModel.RefCompras23" ManuallyRouted="false" />
+        <AssociationConnector Association="ELECTROHOGARModel.RefProveedores25" ManuallyRouted="false" />
+        <AssociationConnector Association="ELECTROHOGARModel.RefCreditos21" ManuallyRouted="false" />
+        <AssociationConnector Association="ELECTROHOGARModel.RefFacturas10" ManuallyRouted="false" />
+        <AssociationConnector Association="ELECTROHOGARModel.RefProductos19" ManuallyRouted="false" />
+        <AssociationConnector Association="ELECTROHOGARModel.RefDetalleFactura24" ManuallyRouted="false" />
+        <AssociationConnector Association="ELECTROHOGARModel.RefFacturas14" ManuallyRouted="false" />
+        <AssociationConnector Association="ELECTROHOGARModel.RefProductos13" ManuallyRouted="false" />
+        <AssociationConnector Association="ELECTROHOGARModel.RefDevoluciones22" ManuallyRouted="false" />
+        <AssociationConnector Association="ELECTROHOGARModel.RefEmpleados12" ManuallyRouted="false" />
+        <AssociationConnector Association="ELECTROHOGARModel.RefEmpleados14" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
